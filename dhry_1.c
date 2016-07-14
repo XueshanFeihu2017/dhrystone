@@ -163,6 +163,11 @@ main ()
 	for(id = 0; id <= MAX_COMMON_EVENT_ID; id++)
 	{
 		int fddev_val = init_pmu(id);
+		if (fddev_val < 0)
+		{
+			printf ("Failed to access PMU events from Dhrystone\n");
+			return;
+		}
 		long long cnt_start = get_pmu(fddev_val);
 #endif
 		/***************/
